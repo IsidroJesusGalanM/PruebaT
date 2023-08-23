@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+// Login Use case
 class FirebaseLoginUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ){

@@ -10,12 +10,13 @@ import androidx.room.Query
 import com.example.pruebat.models.MovieSaved
 import kotlinx.coroutines.flow.Flow
 
+//Dao for the movieSaved
 @Dao
 interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addMovie(movie:MovieSaved)
 
-    @Query("SELECT * FROM movieSaved ORDER BY id ASC")
+    @Query("SELECT * FROM movieSaved")
     fun getSavedMovie(): LiveData<List<MovieSaved>>
 
     @Query("SELECT * FROM movieSaved WHERE title LIKE '%' || :title || '%' ")

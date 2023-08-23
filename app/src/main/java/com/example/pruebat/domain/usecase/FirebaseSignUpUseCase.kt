@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+// register new user case
 class FirebaseSignUpUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ){

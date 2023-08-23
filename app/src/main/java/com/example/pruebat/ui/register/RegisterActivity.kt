@@ -25,17 +25,26 @@ class RegisterActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        //setup Register Activity
+        setup()
+    }
+
+    //fun setup
+    private fun setup() {
         initObservers()
         initListeners()
     }
 
+    //Initialize Observers
     private fun initObservers() {
+
         registerViewModel.singUpState.observe(this){state ->
             when (state) {
                 is Resource.Success-> {
                     handleLoading(isLoading = false)
                     Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, PrincipalActivity::class.java))
+                    startActivity(Intent(this, Login::class.java))
+                    finish()
                 }
                 is Resource.Error ->{
                     handleLoading(isLoading = false)
@@ -48,14 +57,19 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        //nav to login
         registerViewModel.navlogin.observe(this){ nav ->
             if (nav){
-                startActivity(Intent(this,Login::class.java))
+                val intent = Intent(this, Login::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
                 registerViewModel.navToLoginDone()
             }
         }
     }
 
+    //fun to initialize the observers
     private fun initListeners() {
         with(binding){
             registerButton.setOnClickListener {
@@ -68,14 +82,18 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //handle when the signUp is clicked
     private fun handleSignUp() {
         val email = binding.email.text.toString()
         val password = binding.password.text.toString()
-        Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, password, Toast.LENGTH_SHORT).show()
-        registerViewModel.register(email, password)
+        if (registerViewModel.checkEmail(email)){
+            registerViewModel.register(email, password)
+        }else{
+            Toast.makeText(this, "No es un correo Valido", Toast.LENGTH_SHORT).show()
+        }
     }
 
+    //handle when the signUp is in loading state
     private fun handleLoading(isLoading: Boolean) {
         with(binding){
             if (isLoading){
@@ -85,7 +103,7 @@ class RegisterActivity : AppCompatActivity() {
             }else{
                 pbLoadingSign.visibility = View.GONE
                 registerButton.isEnabled = true
-                registerButton.text = getString(R.string.iniciar_sesion)
+                registerButton.text = "Registrarse"
             }
         }
     }

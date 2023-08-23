@@ -1,5 +1,7 @@
 package com.example.pruebat.core
 
+
+//Constants to use in the project on control of the api and images
 object Constantes {
     const val API_KEY = "21b5cbab97b60d5f0999501064c00f66"
     const val BASE_URL = "https://api.themoviedb.org/3/trending/"

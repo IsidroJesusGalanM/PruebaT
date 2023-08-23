@@ -4,7 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "Movies")
+//Model for Movies from API request and parce the data
+@Entity(tableName = "moviesApi")
 data class MovieModel(
     @SerializedName("id")
     @PrimaryKey var id: String,

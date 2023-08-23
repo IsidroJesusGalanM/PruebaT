@@ -15,8 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Login : AppCompatActivity() {
+    //lateinit vars
     private lateinit var binding:ActivityLoginBinding
 
+    //ViewModel Provider
     private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +26,34 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        setup()
+    }
 
+    private fun setup() {
+        loggedControl()
         initObserver()
         initListeners()
     }
 
+    private fun loggedControl() {
+        if (loginViewModel.getSharedPref(applicationContext)){
+            startActivity(Intent(this,PrincipalActivity::class.java))
+            finish()
+        }
+    }
+
     // initialization of observers
     private fun initObserver() {
+
+        //observer from login status change
         loginViewModel.loginState.observe(this){ state->
             when(state){
                 is Resource.Success -> {
                     handleLoading(isLoading = false)
                     Toast.makeText(this, "login success", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, PrincipalActivity::class.java))
+                    loginViewModel.setSharedPreferences(state.data,applicationContext)
+                    finish()
                 }
                 is Resource.Error -> {
                     handleLoading(isLoading = false)
@@ -52,7 +69,9 @@ class Login : AppCompatActivity() {
         //observer to nav to register activity
         loginViewModel.navigateRegister.observe(this){ nav ->
             if (nav){
-                startActivity(Intent(this,RegisterActivity::class.java))
+                val intent = Intent(this, RegisterActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
                 loginViewModel.navToRegisterDone()
             }
         }

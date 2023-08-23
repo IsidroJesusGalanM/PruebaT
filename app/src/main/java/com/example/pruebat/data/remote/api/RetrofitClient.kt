@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Web request for the api TMDB
 object RetrofitClient {
     val webService: WebService  by lazy {
         Retrofit.Builder()

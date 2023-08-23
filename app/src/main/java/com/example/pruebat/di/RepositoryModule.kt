@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 
+//bind for dagger use
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {

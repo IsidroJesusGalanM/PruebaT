@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PruebaT</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
+
+    //shared preferences login string
+    <string name="logged_controller">loggedControl</string>
 </resources>

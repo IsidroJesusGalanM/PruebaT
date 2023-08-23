@@ -1,5 +1,6 @@
 package com.example.pruebat.ui.register
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,5 +41,10 @@ class RegisterViewModel @Inject constructor(
 
     fun navToLoginDone(){
         _navLogin.value = false
+    }
+
+    fun checkEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
     }
 }

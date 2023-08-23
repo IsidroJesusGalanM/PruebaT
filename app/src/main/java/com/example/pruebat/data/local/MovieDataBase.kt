@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.pruebat.models.MovieModel
 import com.example.pruebat.models.MovieSaved
 
-@Database(entities = [MovieSaved::class], version = 1, exportSchema = false)
+//class for init the database with ROOM
+@Database(entities = [MovieSaved::class,MovieModel::class], version = 2, exportSchema = false)
 abstract class MovieDataBase: RoomDatabase(){
 
     abstract fun dao(): MovieDao
+    abstract fun daoMovieApi(): MovieApiDao
 
     companion object{
         @Volatile
@@ -23,7 +26,7 @@ abstract class MovieDataBase: RoomDatabase(){
             synchronized(this){
                 val instance = Room.databaseBuilder(context.applicationContext,
                     MovieDataBase::class.java,"movies"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
 
                 INSTANCE =instance
                 return instance

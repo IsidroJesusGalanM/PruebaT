@@ -3,6 +3,7 @@ package com.example.pruebat.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//Model for movies from database
 @Entity(tableName = "movieSaved")
 data class MovieSaved(
     @PrimaryKey

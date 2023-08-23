@@ -8,11 +8,13 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.pruebat.R
 import com.example.pruebat.databinding.RecyclerItemMovieBinding
 import com.example.pruebat.models.MovieSaved
 
+//Saved recycler view Adapter
 class SavedAdapter(val context: Context):RecyclerView.Adapter<SavedAdapter.ViewHolder>() {
 
     private var movieSaved = emptyList<MovieSaved>()
@@ -40,7 +42,7 @@ class SavedAdapter(val context: Context):RecyclerView.Adapter<SavedAdapter.ViewH
         fun bind(movie: MovieSaved){
             Glide.with(context)
                 .load(movie.poster)
-                .apply(RequestOptions().override(330,330))
+                .apply(RequestOptions().override(330,330).transform(RoundedCorners(32)))
                 .into(binding.imageMovie)
             binding.root.setOnClickListener {
                 onItemClickListener(movie)

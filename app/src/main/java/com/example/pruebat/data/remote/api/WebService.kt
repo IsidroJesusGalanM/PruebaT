@@ -5,6 +5,8 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+
+// API request
 interface WebService {
     @GET("movie/day")
 

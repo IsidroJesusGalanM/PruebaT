@@ -24,6 +24,11 @@ class SavedActivity : AppCompatActivity() {
         //initialize savedViewModel
         savedViewModel = ViewModelProvider(this).get(SavedViewModel::class.java)
 
+        //setup activtity
+        setup()
+    }
+
+    private fun setup() {
         //initialize observers
         initObservers()
 
@@ -31,6 +36,7 @@ class SavedActivity : AppCompatActivity() {
         initListeners()
     }
 
+    //initialize Listener
     private fun initListeners() {
         binding.searchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(searchQuery: String?): Boolean {
@@ -49,6 +55,15 @@ class SavedActivity : AppCompatActivity() {
         })
     }
 
+    //Initialize observers
+    private fun initObservers() {
+        //observe if the list of movie change
+        savedViewModel.readSavedMovies.observe(this){
+            configurateRecycler(it)
+        }
+    }
+
+    //search a movie FUN
     private fun searchMovie(searchQuery: String) {
         val search = "%$searchQuery%"
         savedViewModel.searchMovie(search).observe(this){
@@ -59,13 +74,7 @@ class SavedActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun initObservers() {
-        savedViewModel.readSavedMovies.observe(this){
-            configurateRecycler(it)
-        }
-    }
-
+    //all config for the recyclerView
     fun configurateRecycler(list: List<MovieSaved>){
         val adapter = SavedAdapter(this)
         binding.recyclerPeliculas.adapter = adapter

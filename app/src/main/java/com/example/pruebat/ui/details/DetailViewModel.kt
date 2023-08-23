@@ -17,23 +17,30 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
 
+    //repository val
     private val repository:MovieSavedRepository
+
+    //initialize the repository val
     init {
         val dao = MovieDataBase.getDatabase(application).dao()
         repository = MovieSavedRepository(dao)
     }
+
+    //add data fun
     fun addData(movie:MovieSaved){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addMovie(movie)
         }
     }
 
+    //Delete Selected Movie
     fun deleteMovieSaved(movie:MovieSaved){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteMovie(movie)
         }
     }
 
+    // know if the movie exists in the saved Movies
     fun existsMovie(id:String) :LiveData<Boolean>{
         val mediator = MediatorLiveData<Boolean>()
         repository.existMovieInSaved(id)?.onEach { movieList ->

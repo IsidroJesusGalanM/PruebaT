@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
+//implementation for the firebaseAuth using dagger
 class FirebaseAuthRepositoryImplementation @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) :AuthRepository{

@@ -15,17 +15,18 @@ import kotlinx.coroutines.launch
 
 class SavedViewModel(application: Application): AndroidViewModel(application) {
 
+    //vals
     private val repository:MovieSavedRepository
     val readSavedMovies: LiveData<List<MovieSaved>>
 
-
+    //Init the variables for repository
     init {
         val dao = MovieDataBase.getDatabase(application).dao()
         repository = MovieSavedRepository(dao)
         readSavedMovies = repository.readSavedMovies
-
     }
 
+    //search a movie for the title
     fun searchMovie(title:String): LiveData<List<MovieSaved>>{
         return repository.searchMovieByTitle(title).asLiveData()
     }
