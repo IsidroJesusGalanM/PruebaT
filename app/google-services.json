@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "211635994117",
+    "project_id": "pruebatecnica-78f4a",
+    "storage_bucket": "pruebatecnica-78f4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211635994117:android:07b615cdd74ca7de53666c",
+        "android_client_info": {
+          "package_name": "com.example.pruebat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211635994117-q3fnrjo3qt6abntg0gqug51ajlubgc93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzJICQGu5wiWQ6KzDEPDvXDoYdTw3fvDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211635994117-q3fnrjo3qt6abntg0gqug51ajlubgc93.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
