@@ -11,7 +11,6 @@ import javax.inject.Inject
 class FirebaseAuthRepositoryImplementation @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) :AuthRepository{
-
     override suspend fun login(email: String, password: String): Boolean {
         return try{
             var isSuccessful = true

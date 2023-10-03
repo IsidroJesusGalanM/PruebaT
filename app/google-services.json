@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "211635994117",
-    "project_id": "pruebatecnica-78f4a",
-    "storage_bucket": "pruebatecnica-78f4a.appspot.com"
+    "project_number": "737746029288",
+    "project_id": "amiboopersonalpruebas",
+    "storage_bucket": "amiboopersonalpruebas.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:211635994117:android:07b615cdd74ca7de53666c",
+        "mobilesdk_app_id": "1:737746029288:android:b93d5cc0b01837c38ed75d",
         "android_client_info": {
-          "package_name": "com.example.pruebat"
+          "package_name": "com.example.ambigoo_pantalla_preguntas"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "211635994117-q3fnrjo3qt6abntg0gqug51ajlubgc93.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAzJICQGu5wiWQ6KzDEPDvXDoYdTw3fvDQ"
+          "current_key": "AIzaSyAIXhimAMf5Jz3IvetPRnMpGwzqJX7IRFw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "211635994117-q3fnrjo3qt6abntg0gqug51ajlubgc93.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

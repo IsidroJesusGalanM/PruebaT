@@ -18,4 +18,5 @@ object FirebaseModule {
     fun provideFirebaseAuth():FirebaseAuth{
         return FirebaseAuth.getInstance()
     }
+
 }
